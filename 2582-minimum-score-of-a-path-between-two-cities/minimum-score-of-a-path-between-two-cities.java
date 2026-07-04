@@ -4,23 +4,18 @@ class Solution {
     ArrayList<ArrayList<int[]>> adj;
     boolean[] vis;
 
-    void dfs(int node, int id, int mn) {
-        ans = Math.min(ans, mn);
+    void dfs(int node, int mn) {
 
-        if (id != -1) {
-            vis[id] = true;
-        }
-
+        vis[node] = true;
         for (int[] e : adj.get(node)) {
             int nei = e[0];
             int wt = e[1];
-            int edgeId = e[2];
-
-            if (vis[edgeId]) {
+            ans = Math.min(ans,wt);
+            if (vis[nei]) {
                 continue;
             }
 
-            dfs(nei, edgeId, Math.min(mn, wt));
+            dfs(nei, Math.min(mn, wt));
         }
     }
 
@@ -32,23 +27,20 @@ class Solution {
             adj.add(new ArrayList<>());
         }
 
-        int id = 0;
-
         for (int[] a : roads) {
             int u = a[0] - 1;
             int v = a[1] - 1;
             int d = a[2];
 
-            adj.get(u).add(new int[]{v, d, id});
-            adj.get(v).add(new int[]{u, d, id});
+            adj.get(u).add(new int[]{v, d});
+            adj.get(v).add(new int[]{u, d});
 
-            id++;
         }
 
-        vis = new boolean[id];
+        vis = new boolean[n];
         ans = Integer.MAX_VALUE;
 
-        dfs(0, -1, Integer.MAX_VALUE);
+        dfs(0, Integer.MAX_VALUE);
 
         return ans;
     }
