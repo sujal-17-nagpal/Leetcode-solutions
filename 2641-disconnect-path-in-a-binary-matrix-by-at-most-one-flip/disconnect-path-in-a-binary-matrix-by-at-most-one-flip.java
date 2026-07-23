@@ -45,7 +45,7 @@ class Solution {
         }
         f(0,0);
         dp[n-1][m-1] = 1;
-        print(dp);
+        // print(dp);
         for(int i = 0;i<n;i++){
             int cnt = 0;
             for(int j =0;j<m;j++){
