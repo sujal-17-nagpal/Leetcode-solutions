@@ -57,7 +57,7 @@ class Solution {
             int req = comp(inner,org);
             
             if(freq.containsKey(req)) ans += freq.get(req);
-            System.out.println(i+" "+ans);
+            // System.out.println(i+" "+ans);
 
             ArrayList<Integer> st = compute2(ele);
             for(int key : st){
