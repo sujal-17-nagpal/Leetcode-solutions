@@ -9,7 +9,7 @@ public:
                 s.insert(xo);
             }
         }
-        bool arr[5000] = {};
+        bool arr[2048] = {};
         for (auto i : s) {
             for (int a = 0; a < nums.size(); a++) {
                 int xo = i ^ nums[a];
@@ -17,7 +17,7 @@ public:
             }
         }
         int cnt = 0;
-        for(int i = 0;i<5000;i++){
+        for(int i = 0;i<2048;i++){
             if(arr[i]) cnt++;
         }
         return cnt;
