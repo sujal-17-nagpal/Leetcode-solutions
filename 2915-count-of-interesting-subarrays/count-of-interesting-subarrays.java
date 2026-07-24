@@ -28,7 +28,7 @@ class Solution {
             } else{
                 if(cnt-k>=0) ans += pref[cnt-k];
             }
-            System.out.println(i+" "+ans);
+            // System.out.println(i+" "+ans);
             pref[cnt]++;
         }
         return ans;
