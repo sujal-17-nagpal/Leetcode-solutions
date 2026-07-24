@@ -9,14 +9,18 @@ public:
                 s.insert(xo);
             }
         }
-        unordered_set<int> s1;
+        bool arr[5000] = {};
         for (auto i : s) {
             for (int a = 0; a < nums.size(); a++) {
                 int xo = i ^ nums[a];
-                s1.insert(xo);
+                arr[xo] = true;
             }
         }
-        return s1.size();
+        int cnt = 0;
+        for(int i = 0;i<5000;i++){
+            if(arr[i]) cnt++;
+        }
+        return cnt;
             
     }
 };
