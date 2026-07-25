@@ -2,21 +2,9 @@ class Solution {
 
     int findIn(int a,int b,int [] l){
         int n = l.length;
+
         int st = 0;
         int end = n-1;
-        int left = -1;
-        while(st <= end){
-            int mid = (st)+(end-st)/2;
-            if(l[mid] >=a){
-                left = mid;
-                end = mid-1;
-            } else{
-                st = mid+1;
-            }
-        }
-
-        st = 0;
-        end = n-1;
         int right = -1;
         while(st <= end){
             int mid = st+(end-st)/2;
@@ -27,7 +15,7 @@ class Solution {
                 end = mid-1;
             }
         }
-        return right-left+1;
+        return right-a+1;
     }
 
     public int[] numMovesStonesII(int[] stones) {
@@ -48,7 +36,7 @@ class Solution {
         int minAns = Integer.MAX_VALUE;
         for(int i = 0;i<n;i++){
             int st = stones[i];
-            int ele = findIn(st,st+n-1,stones);
+            int ele = findIn(i,st+n-1,stones);
             if(ele == n-1){
                 if(set.contains(st) && set.contains(st+n-1)){
                     minAns = Math.min(minAns,1);
